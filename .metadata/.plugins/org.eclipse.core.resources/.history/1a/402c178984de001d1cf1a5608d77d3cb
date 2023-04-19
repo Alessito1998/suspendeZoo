@@ -1,0 +1,19 @@
+package zoo;
+
+public class Ave extends Animal{
+
+	private double longitudPico;
+	private boolean rapaz;
+	
+	public Ave(double longitudPico, boolean rapaz) {
+		
+		super();
+		
+		this.longitudPico = longitudPico;
+		this.rapaz = rapaz;
+		
+	}
+	
+	
+	
+}

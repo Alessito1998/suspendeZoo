@@ -1,0 +1,32 @@
+package zoo;
+
+public class Reptil extends Animal {
+
+	private String colorEscamas;
+	
+	public Reptil (String nombre, int edad, String especie, String colorEscamas) {
+		
+		super(nombre, edad, especie);
+		
+		this.colorEscamas = colorEscamas;
+		
+	}
+
+	public String getColorEscamas() {
+		
+		return colorEscamas;
+		
+	}
+
+	public void setColorEscamas(String colorEscamas) {
+		
+		this.colorEscamas = colorEscamas;
+		
+	}
+
+	@Override
+	public String toString() {
+		return "Reptil [colorEscamas=" + colorEscamas + "]";
+	}
+	
+}

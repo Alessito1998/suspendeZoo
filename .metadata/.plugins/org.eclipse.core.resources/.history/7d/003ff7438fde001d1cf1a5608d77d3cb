@@ -1,0 +1,125 @@
+package zoo;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static Scanner entrada = new Scanner(System.in);
+	
+	public static int menu() throws NumberFormatException, DatoVacioÇExcepcion {
+		
+		System.out.println("***** BIENVENIDO AL ZOOLÓGICO *****" + "\n");
+		System.out.println("1. Agregar un animal al zoológico" + "\n"
+						+ "2. Eliminar un animal del zoológico" + "\n"
+						+ "3. Agregar un hábitat" + "\n"
+						+ "4. Eliminar un habitat" + "\n"
+						+ "5. Agregar un cuidador" + "\n"
+						+ "6. Eliminar un cuidador" + "\n"
+						+ "7. Asignar un animal a un hábitat" + "\n"
+						+ "8. Asignar un cuidador a un animal específico" + "\n"
+						+ "9. Mostrar información detallada de un animal" + "\n"
+						+ "10. Mostrar información detallada de un hábitat" + "\n"
+						+ "11. Mostrar información detallada de un cuidador" + "\n"
+						+ "12 Mostrar todos los animales ordenados por edad" + "\n"
+						+ "13. Salir" + "\n");
+		
+		String opcion = entrada.nextLine();
+		
+		if (opcion == null) {
+			
+			DatoVacioÇExcepcion e = new DatoVacioÇExcepcion("Tiene que escoger una opción");
+			throw e;
+			
+		}
+		
+		return Integer.parseInt(opcion);
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		Zoo nuevoZoo;
+		
+		int opcion = 0;
+		
+		do {
+		
+			try {
+			
+				opcion = menu();
+				
+				switch (opcion) {
+				
+				case 1:
+					
+					break;
+					
+				case 2:
+					
+					break;
+					
+				case 3:
+					
+					break;
+					
+				case 4:
+					
+					break;
+					
+				case 5:
+					
+					break;
+					
+				case 6:
+					
+					break;
+					
+				case 7:
+					
+					break;
+					
+				case 8:
+					
+					break;
+					
+				case 9:
+					
+					break;
+					
+				case 10:
+					
+					break;
+					
+				case 11:
+					
+					break;
+					
+				case 12:
+					
+					break;
+					
+				case 13:
+					
+					System.exit(0);
+					
+					break;
+					
+				default: 
+					
+					System.out.println("Introduzca un número entre el 1 y el 14");
+					
+					break;
+				
+				}
+				
+			}
+			
+			catch (NumberFormatException e) {
+				
+			}
+			
+		} while (opcion != 13);
+
+	}
+
+}

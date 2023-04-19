@@ -1,0 +1,10 @@
+package zoo;
+
+import java.util.ArrayList;
+
+public class Habitad {
+
+	private String nombre;
+	private ArrayList <Animal> animales;
+	
+}

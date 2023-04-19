@@ -1,0 +1,19 @@
+package zoo;
+
+import java.util.ArrayList;
+
+public class Habitad {
+
+	private String nombre;
+	private ArrayList <Animal> animales = new ArrayList<>();
+	
+	public Habitad(String nombre, Animal animal) {
+		
+		this.nombre = nombre;
+		this.animales.add(animal);
+		
+	}
+	
+	
+	
+}

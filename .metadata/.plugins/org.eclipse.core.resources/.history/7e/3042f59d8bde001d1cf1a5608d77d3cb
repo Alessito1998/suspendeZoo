@@ -1,0 +1,25 @@
+package zoo;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static Scanner entrada = new Scanner(System.in);
+	
+	public static int menu() {
+		
+		String opcion = entrada.nextLine();
+		
+		return Integer.parseInt(opcion);
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		int opcion;
+		
+		opcion = menu();
+
+	}
+
+}

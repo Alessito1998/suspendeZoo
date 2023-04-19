@@ -1,0 +1,350 @@
+package zoo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
+public class Main {
+
+	public static Scanner entrada = new Scanner(System.in);
+	
+	public static int menu() throws NumberFormatException, DatoVacioExcepcion {
+		
+		System.out.println("***** BIENVENIDO AL ZOOLÓGICO *****" + "\n");
+		System.out.println("1. Agregar un animal al zoológico" + "\n"
+						+ "2. Eliminar un animal del zoológico" + "\n"
+						+ "3. Agregar un hábitat" + "\n"
+						+ "4. Eliminar un habitat" + "\n"
+						+ "5. Agregar un cuidador" + "\n"
+						+ "6. Eliminar un cuidador" + "\n"
+						+ "7. Asignar un animal a un hábitat" + "\n"
+						+ "8. Asignar un cuidador a un animal específico" + "\n"
+						+ "9. Mostrar información detallada de un animal" + "\n"
+						+ "10. Mostrar información detallada de un hábitat" + "\n"
+						+ "11. Mostrar información detallada de un cuidador" + "\n"
+						+ "12 Mostrar todos los animales ordenados por edad" + "\n"
+						+ "13. Salir" + "\n");
+		
+		String opcion = entrada.nextLine();
+		
+		if (opcion == null) {
+			
+			DatoVacioExcepcion e = new DatoVacioExcepcion("Tiene que escoger una opción");
+			throw e;
+			
+		}
+		
+		return Integer.parseInt(opcion);
+		
+	}
+	
+	public static int tipoAnimal() throws NumberFormatException, DatoVacioExcepcion {
+		
+		System.out.println("*** TIPOS DE ANIMALES EN EL ZOO");
+		System.out.println("1. Mamífero" + "\n"
+						+ "2. Aver" + "\n"
+						+ "3. Reptil" + "\n");
+		
+		String tipo = entrada.nextLine();
+		
+		if (tipo == null) {
+			
+			DatoVacioExcepcion e = new DatoVacioExcepcion("Tiene que escoger una opción");
+			throw e;
+		}
+		
+		return Integer.parseInt(tipo);
+		
+	}
+	
+	public static Zoo agregaAnimal() {
+		
+		Mamifero nuevoMamifero;
+		Ave nuevaAve;
+		Reptil nuevoReptil;
+		
+		System.out.println("Introduce el hábitat del animal");
+		
+		String habitat = entrada.nextLine();
+		
+		Habitat nuevoHabitat = new Habitat(habitat);
+		
+		ArrayList <Habitat> habitats = new ArrayList<>();
+		
+		Zoo nuevoZoo = new Zoo(habitats);
+		
+		System.out.println("Escoge un tipo de animal" + "\n");
+		
+		int tipo = 0;
+		
+		do {
+		
+			try {
+		
+				tipo = tipoAnimal();
+			
+			}
+		
+			catch (NumberFormatException e) {
+			
+				System.out.println(e.getMessage());
+			
+			} catch (DatoVacioExcepcion e) {
+			
+				e.printStackTrace();
+			}
+		
+			String nombre;
+			int edad;
+			String especie;
+			Desplazamiento desplazamiento = null;
+			double longitudPico;
+			String esRapaz;
+			boolean rapaz = false;
+			String color;
+			
+			switch (tipo) {
+		
+			case 1:
+				
+				System.out.println("Introduce el nombre del animal");
+				
+				nombre = entrada.nextLine();
+				
+				System.out.println("Introduce la edad del animal");
+				
+				edad = Integer.parseInt(entrada.nextLine());
+				
+				System.out.println("Introduce la especie del animal");
+				
+				especie = entrada.nextLine();
+				
+				System.out.println("Indica su forma de desplazarse Tierra, Mar o Aire");
+				
+				String desplaza = entrada.nextLine().toUpperCase();
+				
+				desplazamiento = desplazar (desplaza, desplazamiento);
+				
+				nuevoMamifero = new Mamifero(nombre, edad, especie, desplazamiento);
+				
+				nuevoZoo.agregaAnimal(nuevoHabitat, nuevoMamifero);
+				
+				tipo = 4;
+				
+				break;
+				
+			case 2:
+				
+				System.out.println("Introduce el nombre del animal");
+				
+				nombre = entrada.nextLine();
+				
+				System.out.println("Introduce la edad del animal");
+				
+				edad = Integer.parseInt(entrada.nextLine());
+				
+				System.out.println("Introduce la especie del animal");
+				
+				especie = entrada.nextLine();
+				
+				System.out.println("Indica la longitud de su pico");
+				
+				longitudPico = Integer.parseInt(entrada.nextLine());
+				
+				System.out.println("¿El ave es rapáz? Si/No");
+				
+				esRapaz = entrada.nextLine().toLowerCase();
+				
+				if (esRapaz.equals("si")) {
+					
+					rapaz = true;
+					
+				}
+				
+				else if (esRapaz.equals("no")) {
+					
+					rapaz = false;
+					
+				}
+				
+				nuevaAve = new Ave(nombre, edad, especie, longitudPico, rapaz);
+				
+				nuevoZoo.agregaAnimal(nuevoHabitat, nuevaAve);
+				
+				tipo = 4;
+				
+				break;
+				
+			case 3:
+				
+				System.out.println("Introduce el nombre del animal");
+				
+				nombre = entrada.nextLine();
+				
+				System.out.println("Introduce la edad del animal");
+				
+				edad = Integer.parseInt(entrada.nextLine());
+				
+				System.out.println("Introduce la especie del animal");
+				
+				especie = entrada.nextLine();
+				
+				System.out.println("Introduce el color de las escamas del animal");
+				
+				color = entrada.nextLine();
+				
+				nuevoReptil = new Reptil(nombre, edad, especie, color);
+				
+				nuevoZoo.agregaAnimal(nuevoHabitat, nuevoReptil);
+				
+				tipo = 4;
+				
+				break;
+				
+			default: 
+				
+				System.out.println("introduzca un número entre el 1 y el 3");
+			
+				break;
+				
+			}
+		
+		} while (tipo != 4);
+			
+		return nuevoZoo;
+		
+	}
+	
+	public static Desplazamiento desplazar(String desplaza, Desplazamiento desplazamiento) {
+		
+		switch (desplaza) {
+		
+		case "TIERRA":
+					
+				desplazamiento = desplazamiento.TIERRA;
+			
+			break;
+			
+		case "MAR":
+			
+			desplazamiento = desplazamiento.MAR;
+			
+			break;
+			
+		case "AIRE":
+			
+			desplazamiento = desplazamiento.AIRE;
+			
+			break;
+			
+		default: 
+			
+			System.out.println("Introduce una opción válida");
+			
+			break;
+		
+		}
+		
+		return desplazamiento;
+	}
+	
+	public static void main(String[] args) {
+		
+		Zoo nuevoZoo;
+		
+		int opcion = 0;
+		
+		do {
+		
+			try {
+			
+				opcion = menu();
+				
+				switch (opcion) {
+				
+				case 1:
+					
+					nuevoZoo = agregaAnimal();
+					
+					System.out.println(nuevoZoo.toString());
+					
+					break;
+					
+				case 2:
+					
+					break;
+					
+				case 3:
+					
+					break;
+					
+				case 4:
+					
+					break;
+					
+				case 5:
+					
+					break;
+					
+				case 6:
+					
+					break;
+					
+				case 7:
+					
+					break;
+					
+				case 8:
+					
+					break;
+					
+				case 9:
+					
+					break;
+					
+				case 10:
+					
+					break;
+					
+				case 11:
+					
+					break;
+					
+				case 12:
+					
+					break;
+					
+				case 13:
+					
+					System.exit(0);
+					
+					break;
+					
+				default: 
+					
+					System.out.println("Introduzca un número entre el 1 y el 14");
+					
+					break;
+				
+				}
+				
+			}
+			
+			catch (NumberFormatException e) {
+				
+				System.out.println(e.getMessage());
+				
+			} catch (DatoVacioExcepcion e) {
+				
+				e.printStackTrace();
+			}
+			
+			
+			
+		} while (opcion != 13);
+
+	}
+
+}

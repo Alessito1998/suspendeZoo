@@ -1,0 +1,27 @@
+package zoo;
+
+public class Mamifero extends Animal{
+
+	private Desplazamiento desplazamiento;
+	
+	public Mamifero (Desplazamiento desplazamiento) {
+		
+		super();
+		
+		this.desplazamiento = desplazamiento;
+		
+	}
+
+	public Desplazamiento getDesplazamiento() {
+		
+		return desplazamiento;
+		
+	}
+
+	public void setDesplazamiento(Desplazamiento desplazamiento) {
+		
+		this.desplazamiento = desplazamiento;
+		
+	}
+	
+}

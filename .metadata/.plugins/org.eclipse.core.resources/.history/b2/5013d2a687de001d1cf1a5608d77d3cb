@@ -1,0 +1,43 @@
+package zoo;
+
+import java.util.ArrayList;
+
+public class Zoo {
+
+	private ArrayList<Habitat> habitats = new ArrayList<>();
+
+	public Zoo(ArrayList<Habitat> habitats) {
+	
+		this.habitats = habitats;
+		
+	}
+
+	public ArrayList<Habitat> getHabitats() {
+		
+		return habitats;
+		
+	}
+
+	public void setHabitats(ArrayList<Habitat> habitats) {
+		
+		this.habitats = habitats;
+		
+	}
+	
+	public void crearHabitat(String nombre, Animal animal) {
+		
+		Habitat nuevoHabitat = new Habitat(nombre, animal);
+		
+	}
+	
+	public void agregaAnimal() {
+		
+		
+	}
+	
+	public void quitaAnimal() {
+		
+		
+	}
+	
+}

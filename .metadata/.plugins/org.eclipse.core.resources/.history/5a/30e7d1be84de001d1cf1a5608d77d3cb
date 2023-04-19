@@ -1,0 +1,15 @@
+package zoo;
+
+public class Reptil extends Animal {
+
+	private String colorEscamas;
+	
+	public Reptil (String colorEscamas) {
+		
+		super();
+		
+		this.colorEscamas = colorEscamas;
+		
+	}
+	
+}

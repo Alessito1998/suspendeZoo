@@ -1,0 +1,63 @@
+package zoo;
+
+import java.util.ArrayList;
+
+public class Zoo {
+
+	private ArrayList<Habitat> habitats = new ArrayList<>();
+
+	public Zoo(ArrayList<Habitat> habitats) {
+	
+		this.habitats = habitats;
+		
+	}
+
+	public ArrayList<Habitat> getHabitats() {
+		
+		return habitats;
+		
+	}
+
+	public void setHabitats(ArrayList<Habitat> habitats) {
+		
+		this.habitats = habitats;
+		
+	}
+	
+	public void crearHabitat(String nombre, Animal animal) {
+		
+		Habitat nuevoHabitat = new Habitat(nombre, animal);
+		
+		this.habitats.add(nuevoHabitat);
+		
+	}
+	
+	//NO ME ACUERDO CÓMO SE HACÍA EL OVERRIDE DEL CONTAINS ASÍ QUE TE LO HAGO ASÍ
+	
+	public void eliminaHabitat(String nombre) {
+		
+		for (int n = 0; n < this.habitats.size(); n++) {
+			
+			if (this.habitats.get(n).getNombre().equals(nombre)) {
+				
+				this.habitats.remove(this.habitats.get(n));
+				
+			}
+			
+		}
+		
+	}
+	
+	public void agregaAnimal(Habitat habitat, Animal animal) {
+		
+		habitat.
+		
+	}
+	
+	public void quitaAnimal() {
+		
+		
+		
+	}
+	
+}

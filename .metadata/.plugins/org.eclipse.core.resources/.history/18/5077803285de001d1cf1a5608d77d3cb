@@ -1,0 +1,16 @@
+package zoo;
+
+public class EmpleadoZoo implements Cuidador{
+
+	private int numeroEmpleado;
+	private String nombre;
+	private String apellido;
+	private String apellido2;
+	
+	@Override
+	public double alimentar() {
+		
+		return 0;
+	}
+
+}

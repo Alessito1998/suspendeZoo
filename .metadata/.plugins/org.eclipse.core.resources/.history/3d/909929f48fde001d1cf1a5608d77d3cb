@@ -1,0 +1,15 @@
+package zoo;
+
+public class DatoVacioÇExcepcion extends Exception {
+
+	public DatoVacioÇExcepcion() {
+		
+	}
+	
+	public DatoVacioÇExcepcion(String msg) {
+		
+		super(msg);
+		
+	}
+	
+}

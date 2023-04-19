@@ -1,0 +1,27 @@
+package zoo;
+
+public class Mamifero extends Animal {
+
+	private Desplazamiento desplazamiento;
+	
+	public Mamifero (String nombre, int edad, Desplazamiento desplazamiento) {
+		
+		super(nombre, edad);
+		
+		this.desplazamiento = desplazamiento;
+		
+	}
+
+	public Desplazamiento getDesplazamiento() {
+		
+		return desplazamiento;
+		
+	}
+
+	public void setDesplazamiento(Desplazamiento desplazamiento) {
+		
+		this.desplazamiento = desplazamiento;
+		
+	}
+	
+}
